@@ -1,0 +1,31 @@
+= Bonne communication
+ifndef::backend-pdf[]
+:imagesdir: images
+endif::[]
+
+== Mise en oeuvre d'une bonne communication
+
+=== Bien nommer
+Bien choisir le nom des identificateurs en adéquation avec leur rôles : variable, fonction, classe, constante...
+Exemple avec une variable :
+
+====
+Éviter :
+
+   int var1;
+
+
+Préférer :
+
+   int nbColis;
+====
+
+Ainsi le code gagne en communication et les *commentaires se font plus rares*. On dit que le code est auto-documenté et guidé par la logique métier.
+
+== Forte cohésion
+Consite à ne pas surcharger en responsabilité les classes et fonctions : *Faire une chose et le faire bien*
+
+Une fonction ne devrait pas déborder de sa responsabilité. Par exemple une fonction qui détermine le login d'une personne sur la base de son nom et prénom (existants dans une base de données, un annuaire...) ne devrait pas afficher un message du type « opération impossible » si elle ne peut réaliser son travail, elle devrait, si le cas est envisageable, plutôt créer une exception.
+
+En se concentrant sur un seul domaine, on renforce la forte cohésion logique de la classe.
+

@@ -1,0 +1,123 @@
+= Limiter la redondance
+ifndef::backend-pdf[]
+:imagesdir: images
+endif::[]
+
+
+La redondance nuit à la maintenance et augmente inutilement la taille du programme.
+Un principe dédié à ce problème :  principe *DRY* (_Don’t Repeat Yourself_ en anglais)
+
+Il existe deux façons de factoriser le code:
+
+1. Placer le code dupliqué dans une fonction, puis remplacer le code dupliqué par un appel à cette dernière. (factorisation fonctionnelle)
+
+2. Placer le code dupliqué dans une classe (si ce n'est  déjà fait), et le réutiliser soit par héritage soit par composition. (factorisation structurelle)
+
+Seul l'héritage est une technique propre à la programmation objet.
+
+== Factorisation fonctionnelle
+
+Cette technique consiste à *factoriser* le code redondant dans une *fonction*.
+
+
+AVANT (attention, implémentation incorrecte – bug potentiel !)
+
+image::refactoring-fonctionnel-avant.png[code avant refactoring]
+
+APRÈS (attention, implémentation incorrecte - bug potentiel !)
+
+image::refactoring-fonctionnel-apres.png[code apres refactoring]
+
+TIP: On remarquera que la fonction créée pour des raisons interne n'est pas publique.
+
+
+== Factorisation structurelle
+
+Cette technique consiste à factoriser par conception de nouvelles classes (et interfaces)
+
+Comme base d'exemple prenons une application de gestion d'utilisateurs contient 2 classes : `Utilisateur` et `UtilisateurUnix`
+
+[source#exemple,java]
+----
+public class Utilisateur {
+  private String nom;
+  private String prenom;
+  private String login;
+
+  public Utilisateur(String nom, String prenom, String login) {
+    super();
+    this.nom = nom;
+    this.prenom = prenom;
+    this.login = login;
+  }
+
+  @Override
+  public String toString() {
+    return this.nom + " " + this.prenom + " " + this.login;
+  }
+}
+
+public class UtilisateurUnix {
+  private String nom;
+  private String prenom;
+  rivate String login;
+  private String shell;
+  private String homeDirectory;
+
+  public UtilisateurUnix(String nom, String prenom, String login,
+           String shell, String home) {
+    super();
+    this.nom = nom;
+    this.prenom = prenom;
+    this.login = login;
+    this.shell = shell;
+    this.homeDirectory = home;
+  }
+
+  @Override
+  public String toString() {
+    return this.nom + " " + this.prenom + " " + this.login + " shell:"
+		+ this.shell + " home:" + this.homeDirectory;
+  }
+}
+----
+
+On constate que ces deux classes ont des caractéristiques communes (attributs et comportement) que nous pouvons factoriser. Il existe pour cela 2 façons d'opérer, par héritage ou composition :
+
+image::refactoring-structurel.png[refactoring-structurel]
+
+La relation «* est-une sorte de *» (_is-a_) est appelée relation d'héritage. Cette relation lie définitivement la classe enfant à sa classe mère (la classe héritée).
+
+La relation «* a le rôle de *» ou «* a un *»  (_has-a_) est une relation de composition (une association). Cette relation a un caractère plus dynamique que l'héritage. En effet, en cours d'exécution, une instance peut changer de rôle, mais pas de classe mère.
+
+La relation d'héritage peut être envisagée si la classe enfant (celle qui hérite) respecte l'ensemble de responsabilités (les contrats) de sa classe mère. Cette contrainte est connue sous le nom de «* principe de Barbara Liskov *» (du nom d'une informaticienne). Les objets de type UtilisateurUnix devrait être 100% compatibles avec ceux de type Utilisateur. C'est conceptuellement le cas ici, nous pouvons donc appliquer cette technique.
+
+=== Transformation par héritage
+
+Cette technique consiste à faire porter les propriété commune à une classe de base (`Utilisateur`).
+
+image::refactoring-heritage.png[refactoring-heritage]
+
+La classe `UtilisateurUnix` est redéfinie sur la base de la classe `Utilisateur`.  On évite ainsi les redondances de déclaration car UtilisateurUnix hérite de l'implémentation de `Utilisateur`.
+
+Bien que la méthode `toString` porte le même nom dans les deux classes, mais elle se comporte différemment dans la classe `Utilisateur` et `UtlisateurUnix`. En effet, comme on peut le constater dans le corps de `toString`, la classe `UtilisateurUnix` profite de (fait un appel à) l'implémentation de la méthode `toString` de sa classe parent (ou sur-classe) via le mot clé `super`.
+
+TIP: On remarquera la différence de syntaxe de l'utilisation de `super` entre un constructeur (de plus super doit être la première instruction) et une méthode où super est utilisé en notation pointée et désigne une méthode directement héritée.
+
+=== Transformation par composition
+
+La relation de composition va souvent de pair avec la mise en place d’interfaces, ce qui permet d’étendre le type d’une classe (pour ne pas se limiter à la classe Object).
+
+Dans l’exemple qui suit, le « type » de Utilisateur est caractérisé par une association, un lien de composition (délégation).
+
+image::refactoring-composition.png[refactoring-composition]
+
+La technique de composition a un caractère plus dynamique. Le lien de composition est réalisé lors de l'instanciation (ici dans le constructeur – c'est à dire en phase d'initialisation de l'objet, dans la plupart du temps).
+
+Ce lien est sous la responsabilité du développeur et peut sous-traiter l'instanciation à un sous-système qui effectuera alors lui-même l'*injection* de l'objet souhaité. Une technique (inversion de dépendance) supportée par nombre de frameworks comme *Spring*, *Symfony*, *Angular* par exemple.
+
+=== Références
+
+• https://fr.wikipedia.org/wiki/Inversion_des_d%C3%A9pendances[Principe d'Inversion de Dépendance]
+
+• 5 principes de conception : https://fr.wikipedia.org/wiki/SOLID_(informatique)[ SOLID]

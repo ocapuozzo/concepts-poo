@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<title>Notion de bases liées à la POO</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#notion-de-bases-liées-à-la-poo">Notion de bases liées à la POO</a></li>
+<li><a href="#principes-initiaux">Principes initiaux</a>
+<ul class="sectlevel2">
+<li><a href="#quelques-principes-fondamentaux-en-conception">Quelques principes fondamentaux en conception</a></li>
+</ul>
+</li>
+<li><a href="#bonne-communication">Bonne communication</a>
+<ul class="sectlevel2">
+<li><a href="#mise-en-oeuvre-d-une-bonne-communication">Mise en oeuvre d&#8217;une bonne communication</a></li>
+<li><a href="#forte-cohésion">Forte cohésion</a></li>
+</ul>
+</li>
+<li><a href="#limiter-la-redondance">Limiter la redondance</a>
+<ul class="sectlevel2">
+<li><a href="#factorisation-fonctionnelle">Factorisation fonctionnelle</a></li>
+<li><a href="#factorisation-structurelle">Factorisation structurelle</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="notion-de-bases-liées-à-la-poo"><a class="anchor" href="#notion-de-bases-liées-à-la-poo"></a>Notion de bases liées à la POO</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Prérequis : l’encapsulation : la notion d&#8217;attribut, méthode et constructeur</p>
+</div>
+<div class="paragraph">
+<p>Les concepts de base de la programmation objet sont généralement résumés par quelques concepts : <strong>Objet</strong>, <strong>Classe</strong>, <strong>Abstraction</strong>, <strong>Polymorphisme</strong>, <strong>Principes de Conception</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Nous avons présenté les notions Objet, Classe et Interface, nous poursuivons ici avec l&#8217;Abstraction, le polymorphisme et des principes de conception.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="principes-initiaux"><a class="anchor" href="#principes-initiaux"></a>Principes initiaux</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="quelques-principes-fondamentaux-en-conception"><a class="anchor" href="#quelques-principes-fondamentaux-en-conception"></a>Quelques principes fondamentaux en conception</h3>
+<div class="paragraph">
+<p>Il y a 2 grandes règles (formulée ici par Kent Beck) que tout développeur devrait connaître :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Le système (code et tests pris dans leur ensemble) doit <strong>communiquer</strong> tout ce que vous avez l&#8217;intention de communiquer. Ce principe a donné lieu à une pratique de conception appelée «<strong> ubiquitus language </strong>» (Erci Evans 2003 – DDD) <a href="http://institut-agile.fr/ubiquitous.html" class="bare">http://institut-agile.fr/ubiquitous.html</a></p>
+</li>
+<li>
+<p>Le système ne doit contenir <strong>aucune duplication de code</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Ces deux contraintes constituent la règle : <strong>Une Fois et Une Seule</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A cela on ajoute :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Le système doit contenir un <strong>nombre minimal de classes</strong>.</p>
+</li>
+<li>
+<p>Les classes doivent contenir un <strong>nombre minimal de méthodes</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>En respectant ces contraintes, le développeur produit du code clair et simple : les classes ne sont pas chargées de responsabilité (on parle de <strong>forte cohésion</strong>) et les méthodes courtes (selon différents points de vue : &lt;= 5 lignes, &lt;= 10 lignes ou qu&#8217;importe si le contenu est clairement lisible et ne contient pas de duplication).
+Exceptions courantes : implémentation d&#8217;un algorithme connu, recherche d&#8217;optimisation&#8230;&#8203; le tout bien commenté.</p>
+</div>
+<div class="paragraph">
+<p>Références :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>[Kent Beck] Extreme Programming la référence, ed. CampusPress, 2002.</p>
+</li>
+<li>
+<p>[Folwer] "Refactoring" de Martin Folwer
+<a href="http://books.google.fr/books?id=1MsETFPD3I0C" class="bare">http://books.google.fr/books?id=1MsETFPD3I0C</a></p>
+</li>
+<li>
+<p>Martin Fowler : « Any fool can write code that a computer can understand. Good programmers write code that humans can understand. »</p>
+</li>
+<li>
+<p>Martin Fowler : <a href="https://martinfowler.com/bliki/UbiquitousLanguage.html" class="bare">https://martinfowler.com/bliki/UbiquitousLanguage.html</a></p>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bonne-communication"><a class="anchor" href="#bonne-communication"></a>Bonne communication</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="mise-en-oeuvre-d-une-bonne-communication"><a class="anchor" href="#mise-en-oeuvre-d-une-bonne-communication"></a>Mise en oeuvre d&#8217;une bonne communication</h3>
+<div class="sect3">
+<h4 id="bien-nommer"><a class="anchor" href="#bien-nommer"></a>Bien nommer</h4>
+<div class="paragraph">
+<p>Bien choisir le nom des identificateurs en adéquation avec leur rôles : variable, fonction, classe, constante&#8230;&#8203;
+Exemple avec une variable :</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Éviter :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>int var1;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Préférer :</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>int nbColis;</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Ainsi le code gagne en communication et les <strong>commentaires se font plus rares</strong>. On dit que le code est auto-documenté et guidé par la logique métier.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="forte-cohésion"><a class="anchor" href="#forte-cohésion"></a>Forte cohésion</h3>
+<div class="paragraph">
+<p>Consite à ne pas surcharger en responsabilité les classes et fonctions : <strong>Faire une chose et le faire bien</strong></p>
+</div>
+<div class="paragraph">
+<p>Une fonction ne devrait pas déborder de sa responsabilité. Par exemple une fonction qui détermine le login d&#8217;une personne sur la base de son nom et prénom (existants dans une base de données, un annuaire&#8230;&#8203;) ne devrait pas afficher un message du type « opération impossible » si elle ne peut réaliser son travail, elle devrait, si le cas est envisageable, plutôt créer une exception.</p>
+</div>
+<div class="paragraph">
+<p>En se concentrant sur un seul domaine, on renforce la forte cohésion logique de la classe.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="limiter-la-redondance"><a class="anchor" href="#limiter-la-redondance"></a>Limiter la redondance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La redondance nuit à la maintenance et augmente inutilement la taille du programme.
+Un principe dédié à ce problème :  principe <strong>DRY</strong> (<em>Don’t Repeat Yourself</em> en anglais)</p>
+</div>
+<div class="paragraph">
+<p>Il existe deux façons de factoriser le code:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Placer le code dupliqué dans une fonction, puis remplacer le code dupliqué par un appel à cette dernière. (factorisation fonctionnelle)</p>
+</li>
+<li>
+<p>Placer le code dupliqué dans une classe (si ce n&#8217;est  déjà fait), et le réutiliser soit par héritage soit par composition. (factorisation structurelle)</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Seul l&#8217;héritage est une technique propre à la programmation objet.</p>
+</div>
+<div class="sect2">
+<h3 id="factorisation-fonctionnelle"><a class="anchor" href="#factorisation-fonctionnelle"></a>Factorisation fonctionnelle</h3>
+<div class="paragraph">
+<p>Cette technique consiste à <strong>factoriser</strong> le code redondant dans une <strong>fonction</strong>.</p>
+</div>
+<div class="paragraph">
+<p>AVANT (attention, implémentation incorrecte – bug potentiel !)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/refactoring-fonctionnel-avant.png" alt="code avant refactoring">
+</div>
+</div>
+<div class="paragraph">
+<p>APRÈS (attention, implémentation incorrecte - bug potentiel !)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/refactoring-fonctionnel-apres.png" alt="code apres refactoring">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+On remarquera que la fonction créée pour des raisons interne n&#8217;est pas publique.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="factorisation-structurelle"><a class="anchor" href="#factorisation-structurelle"></a>Factorisation structurelle</h3>
+<div class="paragraph">
+<p>Cette technique consiste à factoriser par conception de nouvelles classes (et interfaces)</p>
+</div>
+<div class="paragraph">
+<p>Comme base d&#8217;exemple prenons une application de gestion d&#8217;utilisateurs contient 2 classes : <code>Utilisateur</code> et <code>UtilisateurUnix</code></p>
+</div>
+<div id="exemple" class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Utilisateur</span> {
+  <span class="directive">private</span> <span class="predefined-type">String</span> nom;
+  <span class="directive">private</span> <span class="predefined-type">String</span> prenom;
+  <span class="directive">private</span> <span class="predefined-type">String</span> login;
+
+  <span class="directive">public</span> Utilisateur(<span class="predefined-type">String</span> nom, <span class="predefined-type">String</span> prenom, <span class="predefined-type">String</span> login) {
+    <span class="local-variable">super</span>();
+    <span class="local-variable">this</span>.nom = nom;
+    <span class="local-variable">this</span>.prenom = prenom;
+    <span class="local-variable">this</span>.login = login;
+  }
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.nom + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.prenom + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.login;
+  }
+}
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">UtilisateurUnix</span> {
+  <span class="directive">private</span> <span class="predefined-type">String</span> nom;
+  <span class="directive">private</span> <span class="predefined-type">String</span> prenom;
+  rivate <span class="predefined-type">String</span> login;
+  <span class="directive">private</span> <span class="predefined-type">String</span> shell;
+  <span class="directive">private</span> <span class="predefined-type">String</span> homeDirectory;
+
+  <span class="directive">public</span> UtilisateurUnix(<span class="predefined-type">String</span> nom, <span class="predefined-type">String</span> prenom, <span class="predefined-type">String</span> login,
+           <span class="predefined-type">String</span> shell, <span class="predefined-type">String</span> home) {
+    <span class="local-variable">super</span>();
+    <span class="local-variable">this</span>.nom = nom;
+    <span class="local-variable">this</span>.prenom = prenom;
+    <span class="local-variable">this</span>.login = login;
+    <span class="local-variable">this</span>.shell = shell;
+    <span class="local-variable">this</span>.homeDirectory = home;
+  }
+
+  <span class="annotation">@Override</span>
+  <span class="directive">public</span> <span class="predefined-type">String</span> toString() {
+    <span class="keyword">return</span> <span class="local-variable">this</span>.nom + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.prenom + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.login + <span class="string"><span class="delimiter">&quot;</span><span class="content"> shell:</span><span class="delimiter">&quot;</span></span>
+                + <span class="local-variable">this</span>.shell + <span class="string"><span class="delimiter">&quot;</span><span class="content"> home:</span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.homeDirectory;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On constate que ces deux classes ont des caractéristiques communes (attributs et comportement) que nous pouvons factoriser. Il existe pour cela 2 façons d&#8217;opérer, par héritage ou composition :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/refactoring-structurel.png" alt="refactoring-structurel">
+</div>
+</div>
+<div class="paragraph">
+<p>La relation «<strong> est-une sorte de </strong>» (<em>is-a</em>) est appelée relation d&#8217;héritage. Cette relation lie définitivement la classe enfant à sa classe mère (la classe héritée).</p>
+</div>
+<div class="paragraph">
+<p>La relation «<strong> a le rôle de </strong>» ou «<strong> a un </strong>»  (<em>has-a</em>) est une relation de composition (une association). Cette relation a un caractère plus dynamique que l&#8217;héritage. En effet, en cours d&#8217;exécution, une instance peut changer de rôle, mais pas de classe mère.</p>
+</div>
+<div class="paragraph">
+<p>La relation d&#8217;héritage peut être envisagée si la classe enfant (celle qui hérite) respecte l&#8217;ensemble de responsabilités (les contrats) de sa classe mère. Cette contrainte est connue sous le nom de «<strong> principe de Barbara Liskov </strong>» (du nom d&#8217;une informaticienne). Les objets de type UtilisateurUnix devrait être 100% compatibles avec ceux de type Utilisateur. C&#8217;est conceptuellement le cas ici, nous pouvons donc appliquer cette technique.</p>
+</div>
+<div class="sect3">
+<h4 id="transformation-par-héritage"><a class="anchor" href="#transformation-par-héritage"></a>Transformation par héritage</h4>
+<div class="paragraph">
+<p>Cette technique consiste à faire porter les propriété commune à une classe de base (<code>Utilisateur</code>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/refactoring-heritage.png" alt="refactoring-heritage">
+</div>
+</div>
+<div class="paragraph">
+<p>La classe <code>UtilisateurUnix</code> est redéfinie sur la base de la classe <code>Utilisateur</code>.  On évite ainsi les redondances de déclaration car UtilisateurUnix hérite de l&#8217;implémentation de <code>Utilisateur</code>.</p>
+</div>
+<div class="paragraph">
+<p>Bien que la méthode <code>toString</code> porte le même nom dans les deux classes, mais elle se comporte différemment dans la classe <code>Utilisateur</code> et <code>UtlisateurUnix</code>. En effet, comme on peut le constater dans le corps de <code>toString</code>, la classe <code>UtilisateurUnix</code> profite de (fait un appel à) l&#8217;implémentation de la méthode <code>toString</code> de sa classe parent (ou sur-classe) via le mot clé <code>super</code>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+On remarquera la différence de syntaxe de l&#8217;utilisation de <code>super</code> entre un constructeur (de plus super doit être la première instruction) et une méthode où super est utilisé en notation pointée et désigne une méthode directement héritée.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="transformation-par-composition"><a class="anchor" href="#transformation-par-composition"></a>Transformation par composition</h4>
+<div class="paragraph">
+<p>La relation de composition va souvent de pair avec la mise en place d’interfaces, ce qui permet d’étendre le type d’une classe (pour ne pas se limiter à la classe Object).</p>
+</div>
+<div class="paragraph">
+<p>Dans l’exemple qui suit, le « type » de Utilisateur est caractérisé par une association, un lien de composition (délégation).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/refactoring-composition.png" alt="refactoring-composition">
+</div>
+</div>
+<div class="paragraph">
+<p>La technique de composition a un caractère plus dynamique. Le lien de composition est réalisé lors de l&#8217;instanciation (ici dans le constructeur – c&#8217;est à dire en phase d&#8217;initialisation de l&#8217;objet, dans la plupart du temps).</p>
+</div>
+<div class="paragraph">
+<p>Ce lien est sous la responsabilité du développeur et peut sous-traiter l&#8217;instanciation à un sous-système qui effectuera alors lui-même l'<strong>injection</strong> de l&#8217;objet souhaité. Une technique (inversion de dépendance) supportée par nombre de frameworks comme <strong>Spring</strong>, <strong>Symfony</strong>, <strong>Angular</strong> par exemple.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="références"><a class="anchor" href="#références"></a>Références</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://fr.wikipedia.org/wiki/Inversion_des_d%C3%A9pendances">Principe d&#8217;Inversion de Dépendance</a></p>
+</li>
+<li>
+<p>5 principes de conception : <a href="https://fr.wikipedia.org/wiki/SOLID_(informatique)"> SOLID</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-03-15 18:30:58 CET
+</div>
+</div>
+</body>
+</html>

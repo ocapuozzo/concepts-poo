@@ -1,0 +1,11 @@
+= Notion de bases liées à la POO
+ifndef::backend-pdf[]
+:imagesdir: images
+endif::[]
+
+Prérequis : l’encapsulation : la notion d'attribut, méthode et constructeur
+
+Les concepts de base de la programmation objet sont généralement résumés par quelques concepts : *Objet*, *Classe*, *Abstraction*, *Polymorphisme*, *Principes de Conception*.
+
+Nous avons présenté les notions Objet, Classe et Interface, nous poursuivons ici avec l'Abstraction, le polymorphisme et des principes de conception.
+
