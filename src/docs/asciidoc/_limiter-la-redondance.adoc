@@ -116,6 +116,13 @@ La technique de composition a un caractère plus dynamique. Le lien de compositi
 
 Ce lien est sous la responsabilité du développeur et peut sous-traiter l'instanciation à un sous-système qui effectuera alors lui-même l'*injection* de l'objet souhaité. Une technique (inversion de dépendance) supportée par nombre de frameworks comme *Spring*, *Symfony*, *Angular* par exemple.
 
+=== Résumé
+
+Nous avons vu deux techniques structurelles d'élimination de la redondance : mise en place d'une hiérarchie d'héritage (relation parent – enfant) et mise en place d'un graphe de composition (délégation de rôle à des objets) via une interface commune.
+
+Parfois les deux techniques se combinent : délégation de rôles à des objets de type abstrait comportant des implémentations.
+
+
 === Références
 
 • https://fr.wikipedia.org/wiki/Inversion_des_d%C3%A9pendances[Principe d'Inversion de Dépendance]
