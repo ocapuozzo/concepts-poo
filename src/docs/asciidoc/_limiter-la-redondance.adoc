@@ -35,7 +35,7 @@ TIP: On remarquera que la fonction créée pour des raisons interne n'est pas pu
 
 Cette technique consiste à factoriser par conception de nouvelles classes (et interfaces)
 
-Comme base d'exemple prenons une application de gestion d'utilisateurs contient 2 classes : `Utilisateur` et `UtilisateurUnix`
+Comme base d'exemple prenons une application de gestion d'utilisateurs contenant 2 classes : `Utilisateur` et `UtilisateurUnix`
 
 [source#exemple,java]
 ----
@@ -120,4 +120,6 @@ Ce lien est sous la responsabilité du développeur et peut sous-traiter l'insta
 
 • https://fr.wikipedia.org/wiki/Inversion_des_d%C3%A9pendances[Principe d'Inversion de Dépendance]
 
-• 5 principes de conception : https://fr.wikipedia.org/wiki/SOLID_(informatique)[ SOLID]
+• https://fr.wikipedia.org/wiki/Principe_de_substitution_de_Liskov[Principe de subtitution de Barbara Liskov]
+
+• Principes de conception : https://fr.wikipedia.org/wiki/SOLID_(informatique)[SOLID]

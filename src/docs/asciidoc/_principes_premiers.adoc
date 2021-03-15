@@ -5,17 +5,17 @@ endif::[]
 
 == Quelques principes fondamentaux en conception
 
-Il y a 2 grandes règles (formulée ici par Kent Beck) que tout développeur devrait connaître :
+Il y a 2 grandes règles (formulées ici par Kent Beck) que tout développeur devrait connaître :
 
-1. Le système (code et tests pris dans leur ensemble) doit *communiquer* tout ce que vous avez l'intention de communiquer. Ce principe a donné lieu à une pratique de conception appelée «* ubiquitus language *» (Erci Evans 2003 – DDD) http://institut-agile.fr/ubiquitous.html
+1. _Le système (code et tests pris dans leur ensemble) doit *communiquer* tout ce que vous avez l'intention de communiquer_. Ce principe a donné lieu à une pratique de conception appelée «* ubiquitus language *» (Erci Evans 2003 – DDD) http://institut-agile.fr/ubiquitous.html
 2. Le système ne doit contenir *aucune duplication de code*.
 
 NOTE: Ces deux contraintes constituent la règle : *Une Fois et Une Seule*.
 
 A cela on ajoute :
 [start=3]
-3. Le système doit contenir un *nombre minimal de classes*.
-4. Les classes doivent contenir un *nombre minimal de méthodes*.
+. Le système doit contenir un *nombre minimal de classes*.
+. Les classes doivent contenir un *nombre minimal de méthodes*.
 
 En respectant ces contraintes, le développeur produit du code clair et simple : les classes ne sont pas chargées de responsabilité (on parle de *forte cohésion*) et les méthodes courtes (selon différents points de vue : \<= 5 lignes, \<= 10 lignes ou qu'importe si le contenu est clairement lisible et ne contient pas de duplication).
 Exceptions courantes : implémentation d'un algorithme connu, recherche d'optimisation... le tout bien commenté.
